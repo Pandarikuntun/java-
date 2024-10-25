@@ -1,0 +1,42 @@
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class UniqueContiguousSums {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+
+        if (k > n) {
+            System.out.println("Invalid");
+            return;
+        }
+
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        Set<Integer> uniqueSums = new HashSet<>();
+
+        for (int i = 0; i <= n - k; i++) {
+            int sum = 0;
+            for (int j = 0; j < k; j++) {
+                sum += arr[i + j];
+            }
+            uniqueSums.add(sum);
+        }
+
+        TreeSet<Integer> sortedSums = new TreeSet<>(uniqueSums);
+        
+        sortedSums = (TreeSet<Integer>) sortedSums.descendingSet();
+
+        for (int sum : sortedSums) {
+            System.out.print(sum + " ");
+        }
+
+        sc.close();
+    }
+}
