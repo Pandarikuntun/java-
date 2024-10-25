@@ -1,0 +1,33 @@
+import java.io.*;
+import java.util.*;
+import java.util.Scanner;
+
+public class MaxSubarraySum {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int[] arr = new int[n];
+        
+        for (int i = 0; i < n; i++) {
+            arr[i] = scanner.nextInt();
+        }
+        
+        System.out.println(maxSubarraySum(arr));
+        scanner.close();
+    }
+    
+    public static long maxSubarraySum(int[] arr) {
+        long maxSoFar = 0;
+        long maxEndingHere = 0;
+        
+        for (int value : arr) {
+            maxEndingHere += value;
+            if (maxEndingHere < 0) {
+                maxEndingHere = 0;
+            }
+            maxSoFar = Math.max(maxSoFar, maxEndingHere);
+        }
+        
+        return maxSoFar;
+    }
+}
