@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class LargestPrimeFactor {
+    
+    public static long largestPrimeFactor(long n) {
+        long largest = -1;
+        while (n % 2 == 0) {
+            largest = 2;
+            n /= 2;
+        }
+        for (long i = 3; i <= Math.sqrt(n); i += 2) {
+            while (n % i == 0) {
+                largest = i;
+                n /= i;
+            }
+        }
+        if (n > 2) {
+            largest = n;
+        }
+        return largest;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt();
+        for (int i = 0; i < t; i++) {
+            long num = scanner.nextLong();
+            System.out.println(largestPrimeFactor(num));
+        }
+        scanner.close();
+    }
+}
