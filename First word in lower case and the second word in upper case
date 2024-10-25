@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+public class WordFormatter {
+    public static void main(String[] args) {
+        Scanner sca = new Scanner(System.in);
+        String input = sca.nextLine();
+        String[] words = input.split(" ");
+
+        if (words.length == 2) {
+            String firstWord = words[0].toLowerCase();
+            String secondWord = words[1].toUpperCase();
+            System.out.println(firstWord + " " + secondWord);
+        } else {
+            System.out.println("Invalid input. Please enter exactly two words.");
+        }
+
+        sca.close();
+    }
+}
