@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class PatternGenerator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int N = scanner.nextInt();
+        
+        for (int i = 1; i <= N; i++) {
+            printLine(i);
+        }
+        
+        for (int i = N - 1; i >= 1; i--) {
+            printLine(i);
+        }
+    }
+
+    private static void printLine(int i) {
+        for (int j = i; j < 2 * i; j++) {
+            System.out.print(j);
+        }
+        for (int j = 2 * i - 2; j >= i; j--) {
+            System.out.print(j);
+        }
+        System.out.println();
+    }
+}
